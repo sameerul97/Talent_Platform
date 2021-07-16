@@ -1,0 +1,258 @@
+.shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1.9s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    border-radius: 60%;
+    height: 250px;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.project-profile-shine {
+    max-width: 115px;
+    height: 115px;
+    display: block !important;
+    margin: auto;
+    margin: 20px auto;
+}
+ 
+.crew-listing-shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    width: 100%;
+    max-width: 450px;
+    min-height: 356px;
+    margin-bottom: 0px;
+}
+
+.profile-gallery-image-shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    width: 100%;
+    max-width: 200px;
+    min-height: 200px;
+    margin-bottom: 0px;
+}
+
+.profile-name-shine {
+    border-radius: 10px !important;
+    margin: 0px !important;
+    width: 300px !important;
+    height: 50px;
+}
+
+.profile-category-name-shine {
+    width: 200px !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    margin: 0px !important;
+    border-radius: 10px !important;
+}
+
+.modal-add-to-project-loading {
+    margin-left: 30px !important;
+    width: 200px !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    border-radius: 10px !important;
+}
+
+.category-name-shine, .project-name-shine {
+    width: 250px !important;
+    margin: 0px !important;
+}
+
+.crews-profile-image-shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    height: 350px;
+    width: 100%;
+    max-width: 450px;
+    min-height: 350px;
+    /* margin-bottom: 20px; */
+}
+
+.crews-profile-name-shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    height: 32px;
+    width: 100%;
+    max-width: 450px;
+    min-height: 32px;
+    margin-bottom: 1rem;
+    /* margin-bottom: 20px; */
+}
+
+.filter-button-shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    /* background-size: 800px 104px; */
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    height: 50px;
+    width: 100%;
+    border-radius: 20px;
+    width: 150px;
+    min-height: 50px;
+    margin: 0 5px;
+    /* margin-bottom: 1rem; */
+    /* margin-bottom: 20px; */
+}
+
+.crew-listing {
+    /* height: 250px; */
+    width: 100%;
+    max-width: 450px;
+    /* min-height: 450px; */
+    margin-bottom: 20px;
+}
+
+@keyframes placeholderShimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+.back-btn {
+    position: fixed;
+}
+
+.profile-image {
+    border-radius: 60%;
+    height: 300px;
+    width: 300px;
+}
+
+.isotope_item {
+    padding-right: calc(var(--bs-gutter-x)/ 2);
+    padding-left: calc(var(--bs-gutter-x)/ 2);
+    margin-top: var(--bs-gutter-y);
+    max-width: 400px;
+}
+
+/* Filter button overrides */
+
+.filters .button:active, .filters .btn-secondary:active {
+    background-color: #002887!important;
+    border-color: #002887!important;
+}
+
+.btn-secondary+.is-checked:hover {
+    background-color: #002887;
+    border-color: #002887;
+}
+
+.btn-secondary:hover {
+    background-color: #002887;
+    border-color: #002887;
+    background-color: #405ea5;
+    border-color: #405ea5;
+}
+
+.btn-check:focus+.btn-secondary, .btn-secondary:focus {
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-secondary:focus, .btn-check:checked+.btn-secondary:focus, .btn-secondary.active:focus, .btn-secondary:active:focus, .show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-check:focus+.btn-secondary, .btn-secondary:focus {
+    color: #fff;
+    background-color: #002887;
+    border-color: #002887;
+    box-shadow: none;
+}
+
+/**photo-swipe Start**/
+
+.nx-widget-photo-swipe .photo-swipe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/**photo-swipe  End**/
+
+/* Simon Overriding CSS */
+
+.detail-block:last-child {
+    margin: 20px 20px 0px 0;
+    border-right: 1px solid #cacaca;
+    padding-right: 20px;
+}
+
+/* Spinner */
+
+.spinner-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #ffffff69;
+    z-index: 1;
+}
+
+.spinner-overlay>div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
