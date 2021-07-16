@@ -28,7 +28,6 @@ const Router = function ({
         routeFallback: routeFallback ? routeFallback : "Route Not found"
     };
 
-    // const LoadPage = async function (hash) {
     Router.LoadPage = async function (hash) {
         const url = hash.substring(1);
 
@@ -157,15 +156,6 @@ const Router = function ({
         this.dispatch("routeChanged", "changed");
     };
 
-    // // init
-    // (async () => {
-    //     await LoadPage(
-    //         window.location.hash ? window.location.hash : "#" + RouterSettings.default
-    //     );
-
-    //     this.dispatch("routeChanged", "changed");
-    // })();
-
     const InsertHTML = (html, dest) => {
         // create a temporary container and insert provided HTML code
         let container = document.createElement("div");
@@ -198,7 +188,8 @@ const Router = function ({
 };
 
 /**
- * @param {string} newRoute - Route name
+ * Subscribe to router events, pass callback to be exexuted whenever router changes location hash
+ * @param {string} name - Router event name ie: routeChanged
  * @param {requestCallback} cb - Optional callback method will be called once the route is changed successfully
  */
 Router.prototype.on = function (name, callback) {
@@ -207,6 +198,9 @@ Router.prototype.on = function (name, callback) {
     else callbacks.push(callback);
 }
 
+/**
+ * Executes all the callback function which are subscribed using 'routeChanged' listerner
+ */
 Router.prototype.dispatch = function (name, event) {
     var callbacks = this[name];
 

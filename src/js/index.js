@@ -6,11 +6,12 @@ import "../css/owl.theme.default.css";
 
 import crew from "../img/crew.jpg";
 import talent from "../img/talent.jpg";
-import { NotFound } from "../components/notfound/notfound.js";
 
-// import "./app";
+import { NotFound } from "../components/notfound/notfound.js";
+import { get } from "./libs/request";
 import { PubSub, Router } from "./libs/router";
 import { DisplayNoneClass } from '../utils/css';
+
 import Crew from "../pages/crew";
 import Home from "../pages/home";
 import Profile from "../pages/profile";
@@ -26,8 +27,6 @@ import LoginController from "./controller/logincontroller";
 import ProjectController from "./controller/projectcontroller";
 import LogOutController from './controller/logoutcontroller';
 
-import { get } from "./libs/request";
-
 window.config = {
     appName: "Creative Directory",
     appVersion: 0.4,
@@ -38,35 +37,6 @@ window.config = {
 var bb;
 
 document.addEventListener("DOMContentLoaded", async function () {
-    bb = document.getElementById('backbtn');
-
-    $(bb).on('click', function () {
-        window.history.back();
-    });
-
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $('#backbtn').toggleClass('move');
-        $('#content').toggleClass('full-width');
-        $(this).toggleClass('active');
-    });
-
-    const amILoggedIn = async function () {
-        return await get("/gateway/index.php")
-    };
-
-    const logged = await amILoggedIn();
-
-    if (!logged.error) {
-        window.config.userLoggedIn = true;
-    }
-
-    const ShowSideBar = (data) => { window.config.userLoggedIn = true; };
-
-    PubSub.subscribe('userLoggedIn', ShowSideBar);
-
-    IndexController();
-
     const MyRouter = new Router({
         container: document.getElementById("content"),
         defaultRoute: "home",
@@ -118,11 +88,40 @@ document.addEventListener("DOMContentLoaded", async function () {
         },
     });
 
+    MyRouter.init();
+
+    bb = document.getElementById('backbtn');
+
+    $(bb).on('click', function () {
+        window.history.back();
+    });
+
     MyRouter.on('routeChanged', data => {
         $(bb).fadeIn();
     });
 
-    MyRouter.init();
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        $('#backbtn').toggleClass('move');
+        $('#content').toggleClass('full-width');
+        $(this).toggleClass('active');
+    });
+
+    const amILoggedIn = async function () {
+        return await get("/gateway/index.php")
+    };
+
+    const logged = await amILoggedIn();
+
+    if (!logged.error) {
+        window.config.userLoggedIn = true;
+    }
+
+    const ShowSideBar = (data) => { window.config.userLoggedIn = true; };
+
+    PubSub.subscribe('userLoggedIn', ShowSideBar);
+
+    IndexController();
 });
 
 function getApiDomain() {

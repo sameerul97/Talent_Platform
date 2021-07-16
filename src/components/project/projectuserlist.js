@@ -32,8 +32,6 @@ const ProjectUserList = {
         members.forEach((member) => {
             el_project_user_list.innerHTML += this.profileList(member);
         })
-
-        // el_project_user_list.innerHTML += this.addMemberButton();
     },
 
     profileList: (member) => {
