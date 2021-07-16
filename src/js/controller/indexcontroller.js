@@ -25,16 +25,12 @@ async function IndexController() {
 
         const all_projects = await GetAllProject();
 
-        console.log(all_projects);
-
         if (!all_projects.error) {
             SideBarAllProject.init(all_projects)
         }
     };
 
     const UserLoggedIn = async () => {
-        console.log("User logged in, Index controller");
-
         el_sidebar.classList.remove(DisplayNoneClass);
         el_nav_logout_button.classList.remove(DisplayNoneClass);
         el_nav_login_button.classList.add(DisplayNoneClass);
@@ -88,5 +84,3 @@ async function IndexController() {
 }
 
 export default IndexController;
-
-// window.IndexController = IndexController;

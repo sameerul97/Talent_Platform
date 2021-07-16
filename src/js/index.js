@@ -37,10 +37,8 @@ window.config = {
 
 var bb;
 
-
 document.addEventListener("DOMContentLoaded", async function () {
     bb = document.getElementById('backbtn');
-
 
     $(bb).on('click', function () {
         window.history.back();
@@ -53,13 +51,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         $(this).toggleClass('active');
     });
 
-
     const amILoggedIn = async function () {
         return await get("/gateway/index.php")
     };
 
     const logged = await amILoggedIn();
-    console.log(logged);
 
     if (!logged.error) {
         window.config.userLoggedIn = true;
@@ -78,56 +74,41 @@ document.addEventListener("DOMContentLoaded", async function () {
         routes: [
             {
                 url: "home",
-                isComponent: true,
                 view: Home.render,
                 private: true,
             },
             {
                 url: "login",
-                isComponent: true,
                 view: Login.render,
                 isLoginRoute: true,
                 controller: LoginController,
             },
             {
                 url: "logout",
-                isComponent: true,
                 private: true,
                 view: Logout.render,
                 controller: LogOutController,
             },
-            // {
-            //     url: "talent",
-            //     view: "/talent.html",
-            //     private: false,
-            // },
             {
                 url: "crew/category/{categoryid}",
-                isComponent: true,
-                // view: "/search.php?categoryid={categoryid}",
                 view: Search.render,
                 private: true,
                 controller: CrewsController,
             },
             {
                 url: "crew/{id}",
-                // view: "/profile.php?id={id}",
-                isComponent: true,
-                // view: "/search.php?categoryid={categoryid}",
                 view: Profile.render,
                 private: true,
                 controller: ProfileController,
             },
             {
                 url: "project/{projectid}",
-                isComponent: true,
                 view: Project.render,
                 private: true,
                 controller: ProjectController,
             },
             {
                 url: "crew",
-                isComponent: true,
                 view: Crew.render,
                 private: true,
             },
@@ -139,34 +120,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     MyRouter.on('routeChanged', data => {
         $(bb).fadeIn();
-        console.log(PubSub);
-        // console.log(data, "routeChanged event", new Date());
     });
 
     MyRouter.init();
 });
-// Load Events
-
-// console.log(DisplayNoneClass, PubSub, Router);
-
-
-function getHtmlPageDomain() {
-    const domain = window.location.href.split("/")[2];
-    // const domain = url.split(":")[0];
-
-
-    if (domain === 'localhost:8081') {
-        console.log(domain)
-    }
-
-    // if (url === "planetradio.co.uk" || url === "creative.bauermedia.co.uk") {
-    //     return "https://creative.bauermedia.co.uk/talent_platform/v3/api";
-    // } else {
-    //     return "http://localhost:8888/Project_2021/talent_platform/api";
-    // }
-}
-
-// getHtmlPageDomain();
 
 function getApiDomain() {
     const url = window.location.href.split("/")[2];

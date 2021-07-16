@@ -7,7 +7,6 @@ const DefaultRouterSettings = {
 
 const RouterParams = {};
 let RouteChangedCallbacks = [];
-
 const Router = function ({
     defaultRoute,
     routes,
@@ -60,23 +59,12 @@ const Router = function ({
 
         if (Route.view) {
             try {
-                if (Route.isComponent) {
-                    const html = await Route.view();
+                const html = await Route.view();
 
-                    InsertHTML(html, Router.RouterSettings.content);
+                InsertHTML(html, Router.RouterSettings.content);
 
-                    if (Route.controller) {
-                        Route.controller();
-                    }
-                } else {
-                    const page = await fetch(Route.view);
-                    const html = await page.text();
-
-                    if (page.status === 404) {
-                        throw new Error();
-                    }
-
-                    InsertHTML(html, Router.RouterSettings.content);
+                if (Route.controller) {
+                    Route.controller();
                 }
 
                 document.location.hash = "#" + Route.url;
