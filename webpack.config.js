@@ -109,25 +109,6 @@ module.exports = {
                     }
                 ]
             },
-            // {
-            //     test: /\.scss$/,
-            //     use: [
-            //         MiniCssExtractPlugin.loader,
-            //         {
-            //             loader: 'css-loader',
-            //             options: {
-            //                 url: false,
-            //                 sourceMap: true
-            //             }
-            //         },
-            //         {
-            //             loader: 'sass-loader',
-            //             options: {
-            //                 sourceMap: true
-            //             }
-            //         }
-            //     ]
-            // }
         ]
     },
     plugins: [
@@ -139,10 +120,6 @@ module.exports = {
             from: 'src/img',
             to: 'img'
         }]),
-        // new webpack.ProvidePlugin({
-        //     $: "jquery",
-        //     jQuery: "jquery"
-        // }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -151,21 +128,7 @@ module.exports = {
         new HTMLWebpackPlugin({
             filename: "index.html",
             template: "src/pages/index.html",
-            // hash: true,
-            // chunks: ["index"]
         }),
-        // new HTMLWebpackPlugin({
-        //     filename: "home.html",
-        //     template: "src/pages/home.html",
-        //     // hash: true,
-        //     chunks: []
-        // }),
-        // new HTMLWebpackPlugin({
-        //     filename: "crew.html",
-        //     template: "src/pages/crew.html",
-        //     // hash: true,
-        //     chunks: []
-        // }),
     ]
         // .concat(htmlPlugins)
         .concat(new HtmlBeautifyPlugin({
@@ -182,7 +145,6 @@ module.exports = {
         })),
     optimization: {
         minimizer: [
-            // enable the js minification plugin
             new TerserPlugin({
                 cache: true,
                 parallel: true,
@@ -193,7 +155,6 @@ module.exports = {
                     },
                 },
             }),
-            // enable the css minification plugin
             new OptimizeCSSAssetsPlugin({})
         ]
     },

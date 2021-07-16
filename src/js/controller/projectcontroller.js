@@ -4,12 +4,11 @@ import { NotFound } from "../../components/notfound/notfound.js";
 import { getParams } from "../libs/router";
 
 import CategoryCarousel from "../../components/project/categorycarousel.js";
+import ProjectUserList from "../../components/project/projectuserlist.js";
 
 async function ProjectController() {
-    // async function ProjectController(project_id) {
-
     const project_id = parseInt(getParams().projectid);
-
+    
     const el_inner_content = document.getElementById("inner-content");
     const el_project_name_loading = document.getElementById("project_name_loading");
     const el_project_info_wrapper = document.querySelector("#project_info_wrapper");
@@ -17,32 +16,42 @@ async function ProjectController() {
     const el_project_brand_and_data = el_project_info_wrapper.querySelector("p");
     const el_project_carousel_wrapper = document.getElementById("project_carousel_wrapper");
     const el_modal_delete_from_project = document.getElementById("delete_from_project");
+    const el_project_user_list_wrapper = document.getElementById("project_user_list_wrapper");
 
-    const [ProjectInfo, ProjectCategories] = await Promise.all([
-        get("/project/", { project_id: project_id }),
-        get("/project/category/", { project_id: project_id })
-    ]);
+    try {
+        ProjectUserList.render(el_project_user_list_wrapper);
 
-    if (ProjectInfo.error) {
-        el_inner_content.innerHTML = NotFound("Project");
-        return;
+        const [ProjectInfo, ProjectCategories, ProjectColloborators] = await Promise.all([
+            get("/project/", { project_id: project_id }),
+            get("/project/category/", { project_id: project_id }),
+            get("/project/user/index.php", { project_id: project_id })
+        ]);
+
+        ProjectUserList.init(ProjectColloborators);
+
+        if (ProjectInfo.error) {
+            el_inner_content.innerHTML = NotFound("Project");
+            return;
+        }
+
+        el_project_name.innerHTML = ProjectInfo.name;
+        el_project_brand_and_data.innerHTML = `${ProjectInfo.brand} - ${new Date(ProjectInfo.date).toDateString().split(' ').slice(1).join(' ')}`;
+        el_project_name_loading.classList.add(DisplayNoneClass)
+
+        const promises = [];
+
+        for (const i in ProjectCategories) {
+            const { category_id, project_id, name } = ProjectCategories[i];
+            const el_crew_category_carousel_container_id = `crew_category_id_${category_id}_project_id_${project_id}`;
+
+            CategoryCarousel.render(el_project_carousel_wrapper, el_crew_category_carousel_container_id, name);
+            promises.push(getCrewForCategory(category_id, project_id, el_project_carousel_wrapper, el_crew_category_carousel_container_id, name));
+        }
+
+        Promise.all(promises);
+    } catch (error) {
+        // TODO: Handle Error, if fetching a project fails
     }
-
-    el_project_name.innerHTML = ProjectInfo.name;
-    el_project_brand_and_data.innerHTML = `${ProjectInfo.brand} - ${new Date(ProjectInfo.date).toDateString().split(' ').slice(1).join(' ')}`;
-    el_project_name_loading.classList.add(DisplayNoneClass)
-
-    const promises = [];
-
-    for (const i in ProjectCategories) {
-        const { category_id, project_id, name } = ProjectCategories[i];
-        const el_crew_category_carousel_container_id = `crew_category_id_${category_id}_project_id_${project_id}`;
-
-        CategoryCarousel.render(el_project_carousel_wrapper, el_crew_category_carousel_container_id, name);
-        promises.push(getCrewForCategory(category_id, project_id, el_project_carousel_wrapper, el_crew_category_carousel_container_id, name));
-    }
-
-    Promise.all(promises);
 
     const el_modal_delete_from_project_reference = new bootstrap.Modal(el_modal_delete_from_project, {
         keyboard: false

@@ -7,15 +7,15 @@ const Project = {
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-sm-12 col-lg-9 col-xl-9" id="project_info_wrapper">
+                        <div class="col-sm-12 col-lg-9 col-xl-8" id="project_info_wrapper">
                             <div class="filter-button-shine project-name-shine" id="project_name_loading"></div>
                             <h2></h2>
                             <p class="heading"></p>
                             <!-- <p class="heading">Grazia - 17th June 2021</p> -->
                         </div>
-
+                        <div class="col-xl-4 my-auto" id="project_user_list_wrapper">
+                        </div>
                         <div id="project_carousel_wrapper">
-                
                         </div>
                     </div>
                 </div>

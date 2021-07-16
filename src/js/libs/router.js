@@ -284,4 +284,5 @@ const changeRoute = function (newRoute, cb) {
 
     document.location.hash = newRoute;
 }
+
 export { PubSub, Router, changeRoute, getParams };
