@@ -1,4 +1,3 @@
-![Talent Platform](https://raw.githubusercontent.com/sameerul97/Talent_Platform/master/src/img/tp.JPG)
 
 # Talent Platform (Creative Directory)
 
