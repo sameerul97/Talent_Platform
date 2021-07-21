@@ -16,12 +16,7 @@ const ProfileCategory = () =>/*html*/ `
 `;
 
 export {
-    ProfileImage : ProfileImage,
-    ProfileName : ProfileName,
-    ProfileCategory : ProfileCategory
+    ProfileImage,
+    ProfileName,
+    ProfileCategory
 };
-// export {
-//     ProfileImage,
-//     ProfileName,
-//     ProfileCategory
-// };

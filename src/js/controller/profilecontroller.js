@@ -20,10 +20,8 @@ import ProfileGalleryImages from "../../components/profile/profilegalleryimages.
 import ProfileBudgetAndLocation from "../../components/profile/profilebugetandlocation.js";
 import { NotFound } from "../../components/notfound/notfound.js";
 
-// async function ProfileController({ id }) {
-async function ProfileController() {
-    // const DisplayNoneClass = "d-none";
-    // const id = Router.params.id;
+ 
+async function ProfileController() { 
     const id = parseInt(getParams().id);
     /* DOM elements */
     const el_inner_content = document.getElementById("inner-content");
@@ -147,8 +145,6 @@ async function ProfileController() {
             get("/crew/subcategory/index.php", { crew_id: crew_id },).then((data) => (tags = data))
         ]);
 
-        // console.log(profile)
-
         ProfileCategory.init(crew_category_name);
         ProfileAvailableFor.init(tags, crew_id);
         ProfileGalleryImages.init(uploaded_images, crew_id);
@@ -175,7 +171,5 @@ async function ProfileController() {
         console.log(err);
     }
 }
-
-// window.ProfileController = ProfileController;
 
 export default ProfileController;

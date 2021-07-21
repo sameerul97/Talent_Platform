@@ -303,7 +303,4 @@ async function CrewsController(categoryid) {
     }
 }
 
-// window.CrewsController = CrewsController;
-
-
 export default CrewsController;

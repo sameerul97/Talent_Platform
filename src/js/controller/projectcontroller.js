@@ -113,8 +113,4 @@ async function ProjectController() {
     }
 }
 
-
 export default ProjectController;
-
-
-// window.ProjectController = ProjectController;
